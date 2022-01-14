@@ -8,12 +8,14 @@ class Tarea {
     constructor(desc) {
         //para crear un numero aleatorio unico
         this.id = uuidv4();
-        this.desc = desc
+        this.desc = desc;
+
     }
 
 }
 
 module.exports = {
 
-    Tarea
+    Tarea,
+
 }

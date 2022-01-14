@@ -2,24 +2,29 @@
 
 const { guardar, leer } = require('./helpers/guardarArchivo');
 const { inquierMenu, pausa, leerInput } = require('./helpers/inquiar');
+const { Tarea } = require('./models/Tarea');
 // const { Tarea } = require('./models/Tarea');
+const { Tareas } = require('./models/Tareas');
 
 
 
-const Tareas = require('./models/Tareas');
 
 require('colors')
 
 
 console.clear();
+
 const main = async() => {
     let opt = ''
 
     const tareas = new Tareas();
+
+
     const tareasDb = leer();
 
-    if (tareasDb) {
 
+    if (tareasDb) {
+        tareas.cargarTareasFromArray(tareasDb);
     }
 
 
@@ -38,7 +43,9 @@ const main = async() => {
 
             case '2':
                 // listar tareas
-                console.log(tareas.lista)
+                // console.log(tareas.lista)
+                tareas.listarTareas();
+                // console.log(tareas.lista)
                 break;
 
             case '3':
@@ -54,7 +61,7 @@ const main = async() => {
                 break;
         }
 
-        // guardar(tareas.lista);
+        guardar(tareas.lista);
 
 
 
@@ -62,6 +69,9 @@ const main = async() => {
 
     }
     while (opt != 0)
+
+
+
 }
 
 main()

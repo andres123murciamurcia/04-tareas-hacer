@@ -18,9 +18,11 @@ const leer = () => {
         // esto convierte de un string
     const data = JSON.parse(info)
     console.log(data)
-
-    return null
+        // ]console.log(tareasDb[0].desc)
+    return data
 }
+
+
 module.exports = {
 
     guardar,

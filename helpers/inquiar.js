@@ -33,22 +33,22 @@ const preguntas = [
             },
             {
                 value: '3',
-                name: '3.listar tareas completadas'
+                name: `${ '3.'.green }tareas completadas `
             },
             {
                 value: '4',
-                name: '4.listar tareas pendientes'
+                name: `${ '4.'.green }listar tareas pendientes`
             },
             {
                 value: '5',
-                name: '5.completar tarea'
+                name: `${ '5.'.green }completar tarea`
             }, {
                 value: '6',
-                name: '6.borrar tarea'
+                name: `${ '6.'.green }borrar tarea`
             },
             {
                 value: '0',
-                name: '0.salir '
+                name: `${ '0.'.green }salir `
             },
 
 
