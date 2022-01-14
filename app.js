@@ -1,7 +1,7 @@
 // const { mostrarMenu, pausa } = require('./helpers/mensajes');
 
 const { guardar, leer } = require('./helpers/guardarArchivo');
-const { inquierMenu, pausa, leerInput } = require('./helpers/inquiar');
+const { inquierMenu, pausa, leerInput, listarTareasBorrar, confirmar, mostrarListadoChecklist } = require('./helpers/inquiar');
 const { Tarea } = require('./models/Tarea');
 // const { Tarea } = require('./models/Tarea');
 const { Tareas } = require('./models/Tareas');
@@ -49,15 +49,32 @@ const main = async() => {
                 break;
 
             case '3':
+                completadas = true
+                tareas.listarPendientesCompletadas(completadas);
                 break;
 
             case '4':
+                completadas = false
+                tareas.listarPendientesCompletadas(completadas);
                 break;
 
             case '5':
+
+                const ids = await mostrarListadoChecklist(tareas.lista)
+                tareas.toggleCompletada(ids)
                 break;
 
             case '6':
+                const id = await listarTareasBorrar(tareas.lista);
+                if (id !== '0') {
+                    const borrarSINO = await confirmar('esta seguro?')
+                    if (borrarSINO) {
+                        tareas.borrarTarea(id);
+                        console.log('tareas borrada'.red)
+                    }
+
+                }
+
                 break;
         }
 
